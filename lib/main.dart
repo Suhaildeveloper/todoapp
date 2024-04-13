@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      supportedLocales: [
-        Locale('en'),
+      supportedLocales: const [
         Locale('ar'),
+        Locale('en')
       ],
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         for (var locale in supportedLocales) {
           if (devicelocale != null &&
               devicelocale.languageCode == locale.languageCode) {
+            print(devicelocale);
             return devicelocale;
           }
           return supportedLocales.first;

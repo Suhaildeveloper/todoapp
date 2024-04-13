@@ -12,6 +12,7 @@ import 'package:udemy_app/modules/tasks_screen.dart';
 import 'package:udemy_app/shared/component/constants.dart';
 import 'package:udemy_app/shared/cubit/cubit.dart';
 import 'package:udemy_app/shared/cubit/states.dart';
+import 'package:udemy_app/shared/languge/app_localizations.dart';
 
 class HomeLayout extends StatelessWidget {
   var scaffoldKey = GlobalKey<ScaffoldState>();
@@ -70,7 +71,9 @@ class HomeLayout extends StatelessWidget {
                                   TextFormField(
                                     keyboardType: TextInputType.text,
                                     decoration: InputDecoration(
-                                      label: Text("Title"),
+                                      label: Text(
+                                        "text_one".tr(context)
+                                      ),
                                       prefixIcon: Icon(Icons.title_rounded),
                                       border: OutlineInputBorder(),
                                     ),
@@ -108,11 +111,12 @@ class HomeLayout extends StatelessWidget {
                                         context: context,
                                         initialDate: DateTime.now(),
                                         firstDate: DateTime.now(),
-                                        lastDate: DateTime.parse('2022-11-01'),
+                                        lastDate: DateTime.parse('2099-01-01'),
                                       ).then((value) {
                                         dateController.text =
                                             DateFormat.MMMMd().format(value!);
                                       });
+                      
                                     },
                                     controller: dateController,
                                   ),
@@ -134,6 +138,7 @@ class HomeLayout extends StatelessWidget {
                                       }
                                     },
                                     onTap: () {
+
                                       showTimePicker(
                                               context: context,
                                               initialTime: TimeOfDay.now())
@@ -172,7 +177,7 @@ class HomeLayout extends StatelessWidget {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.menu),
-                  label: 'Tasks',
+                  label: 'tasks'.tr(context),
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.check_circle_outline), label: 'Done'),

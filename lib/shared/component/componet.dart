@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:udemy_app/shared/cubit/cubit.dart';
+import 'package:udemy_app/shared/languge/app_localizations.dart';
 
 Widget buildTaskItem(Map moData, context) => Dismissible(
       key: Key(moData['id'].toString()),
@@ -90,7 +91,7 @@ Widget noTasks({required List dataTasks}) => ConditionalBuilder(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.menu,size: 100.0,color: Colors.grey,),
-                  Text("you Don't have Any Task ",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),)
+                  Text("no_tasks".tr(context),style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),)
                 ],
               ),
             ),
