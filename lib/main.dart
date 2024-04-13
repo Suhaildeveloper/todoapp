@@ -1,12 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:udemy_app/layout/home_screen.dart';
 import 'package:udemy_app/shared/cubit_observal.dart';
+import 'package:udemy_app/shared/languge/app_localizations.dart';
 
 void main() {
-    Bloc.observer = MyBlocObserver();
-    runApp(const MyApp());
-
+  Bloc.observer = MyBlocObserver();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +16,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-     home: HomeLayout(),
+      supportedLocales: [
+        Locale('en'),
+        Locale('ar'),
+      ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (devicelocale, supportedLocales) {
+        for (var locale in supportedLocales) {
+          if (devicelocale != null &&
+              devicelocale.languageCode == locale.languageCode) {
+            return devicelocale;
+          }
+          return supportedLocales.first;
+        }
+      },
+      home: HomeLayout(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
