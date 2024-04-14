@@ -35,15 +35,16 @@ class HomeLayout extends StatelessWidget {
           AppCubit cubit = AppCubit.get(context);
           return Scaffold(
             key: scaffoldKey,
-            appBar: AppBar(
-              title: Text(cubit.titles[cubit.currentIndex]),
+            appBar: AppBar(  // tr.(context) # For translate text Title Screen
+              title: Text(cubit.titles[cubit.currentIndex].tr(context)),
             ),
             body: ConditionalBuilder(
-              condition: state is! AppGetDatabaseLoadingState,
-              builder: (context) => cubit.screens[cubit.currentIndex],
-              fallback: (context) =>  Center(child: CircularProgressIndicator())),
-              //cubit.newDataTasks.isEmpty
-                
+                condition: state is! AppGetDatabaseLoadingState,
+                builder: (context) => cubit.screens[cubit.currentIndex],
+                fallback: (context) =>
+                    Center(child: CircularProgressIndicator())),
+            //cubit.newDataTasks.isEmpty
+
             floatingActionButton: FloatingActionButton(
               onPressed: () {
                 if (cubit.isBtnShow) {
@@ -71,21 +72,18 @@ class HomeLayout extends StatelessWidget {
                                   TextFormField(
                                     keyboardType: TextInputType.text,
                                     decoration: InputDecoration(
-                                      label: Text(
-                                        "text_one".tr(context)
-                                      ),
+                                      label: Text("text_one".tr(context)),
                                       prefixIcon: Icon(Icons.title_rounded),
                                       border: OutlineInputBorder(),
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return "title must not be Empty";
+                                        return "warning_title".tr(context);
                                       } else {
                                         return null;
                                       }
                                     },
-                                    onTap: () {
-                                    },
+                                    onTap: () {},
                                     controller: titleController,
                                   ),
                                   SizedBox(
@@ -94,14 +92,14 @@ class HomeLayout extends StatelessWidget {
                                   TextFormField(
                                     keyboardType: TextInputType.datetime,
                                     decoration: InputDecoration(
-                                      label: Text("Task Date"),
+                                      label: Text("task_date".tr(context)),
                                       prefixIcon:
                                           Icon(Icons.date_range_outlined),
                                       border: OutlineInputBorder(),
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return "Task Date must not be Empty";
+                                        return "warning_date".tr(context);
                                       } else {
                                         return null;
                                       }
@@ -116,7 +114,6 @@ class HomeLayout extends StatelessWidget {
                                         dateController.text =
                                             DateFormat.MMMMd().format(value!);
                                       });
-                      
                                     },
                                     controller: dateController,
                                   ),
@@ -126,19 +123,18 @@ class HomeLayout extends StatelessWidget {
                                   TextFormField(
                                     keyboardType: TextInputType.datetime,
                                     decoration: InputDecoration(
-                                      label: Text("Task Time"),
+                                      label: Text("task_time".tr(context)),
                                       prefixIcon: Icon(Icons.watch_outlined),
                                       border: OutlineInputBorder(),
                                     ),
                                     validator: (value) {
                                       if (value!.isEmpty) {
-                                        return "Task Time must not be Empty";
+                                        return "warning_time".tr(context);
                                       } else {
                                         return null;
                                       }
                                     },
                                     onTap: () {
-
                                       showTimePicker(
                                               context: context,
                                               initialTime: TimeOfDay.now())
@@ -170,6 +166,8 @@ class HomeLayout extends StatelessWidget {
             ),
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.fixed,
+              selectedFontSize: 16.0,
+              unselectedFontSize: 15.0,
               currentIndex: cubit.currentIndex,
               onTap: (index) {
                 cubit.changeCurrent(index);
@@ -177,12 +175,16 @@ class HomeLayout extends StatelessWidget {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.menu),
-                  label: 'tasks'.tr(context),
+                  label: 'tasks_bottom'.tr(context),
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.check_circle_outline), label: 'Done'),
+                    icon: Icon(Icons.check_circle_outline),
+                    label: 'done_tasks_bottom'.tr(context)
+                    ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.archive_outlined), label: 'Archived'),
+                    icon: Icon(Icons.archive_outlined),
+                    label: 'archive_tasks_bottom'.tr(context)
+                    ),
               ],
             ),
           );

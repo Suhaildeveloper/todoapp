@@ -1,6 +1,16 @@
 {
     "text_one":"title",
     "tasks_screen":"Tasks Screen",
-    "tasks":"Tasks",
-    "no_tasks":"نص اختبار اللغة العربية داخل الانجليزية"
+    "tasks_bottom":"Tasks",
+    "done_tasks_screen":"Done Tasks Screen",
+    "archive_screen":"Archived Tasks Screen",
+    "done_tasks_bottom":"Done Tasks",
+    "archive_tasks_bottom":"Archived Tasks",
+    "no_tasks":"You Don/'t Have Any Tasks ",
+    "task_date":"Task Time",
+    "task_time":"Task Date",
+    "warning_title":"Task Title must not be Empty",
+    "warning_date":"Task Date must not be Empty",
+    "warning_time":"Task Time must not be Empty"
+
 }

@@ -15,6 +15,8 @@ class ArchivedScreen extends StatelessWidget {
 
           return noTasks(dataTasks: dataTasks);
         },
-        listener: (context, state) => {});
+        listener: (context, state) => {
+          
+        });
   }
 }

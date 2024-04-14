@@ -1,3 +1,5 @@
+// import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqflite/sqflite.dart';
@@ -5,6 +7,7 @@ import 'package:udemy_app/modules/archived_screen.dart';
 import 'package:udemy_app/modules/done_screen.dart';
 import 'package:udemy_app/modules/tasks_screen.dart';
 import 'package:udemy_app/shared/cubit/states.dart';
+// import 'package:udemy_app/shared/languge/app_localizations.dart';
 
 class AppCubit extends Cubit<AppStates> {
   AppCubit() : super(AppInitailState());
@@ -16,16 +19,18 @@ class AppCubit extends Cubit<AppStates> {
   IconData fabIcon = Icons.edit;
 
   List<String> titles = [
-    'Tasks Screen',
-    'Done Task Screen',
-    'Archived Task Screen',
+    'tasks_screen',
+    'done_tasks_screen',
+    'archive_screen',
   ];
+
   List<Widget> screens = [
     TaskScreen(),
     DoneScreen(),
     ArchivedScreen(),
   ];
 
+  void changeTitle(int index) {}
   void changeCurrent(int index) {
     currentIndex = index;
     emit(AppBottomNavBarState());
@@ -132,9 +137,13 @@ class AppCubit extends Cubit<AppStates> {
   void deleteDatabase({
     required int id,
   }) {
-    database!.rawDelete('DELETE FROM Test WHERE id = ? ',[id]).then((value) {
+    database!.rawDelete('DELETE FROM Test WHERE id = ? ', [id]).then((value) {
       getDataFromDatabase(database);
       emit(AppDeleteDataState());
     });
   }
+
+   
 }
+// String tr(BuildContext context) => AppLocalizations.of(context)!.translate(this);
+

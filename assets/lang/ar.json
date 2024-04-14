@@ -1,6 +1,15 @@
 {
     "text_one":"عنوان المهمه",
-    "tasks_screen":"شاشة المهام",
-    "tasks":"المهام",
-    "no_tasks":"لاتوجد لديك مهام "
+    "tasks_screen":" شاشة المهام الجديدة",
+    "done_tasks_screen":" شاشة المهام المكتملة",
+    "archive_screen":"شاشةأرشيف المهام",
+    "tasks_bottom":"المهام",
+    "done_tasks_bottom":"مهام مكتملة",
+    "archive_tasks_bottom":"أرشيف المهام",
+    "no_tasks":"لاتوجد لديك مهام ",
+    "task_date":"اختر التاريخ",
+    "task_time":"اختر الساعة",
+    "warning_title":"لايمكن ترك عنوان المهمه فارغاً",
+    "warning_date":"لايمكن ترك التاريخ فارغاً",
+    "warning_time":"لايمكن ترك الزمن فارغاً"
 }
