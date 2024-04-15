@@ -1,4 +1,4 @@
-import 'dart:async';
+// import 'dart:async';
 
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
@@ -71,6 +71,7 @@ class HomeLayout extends StatelessWidget {
                                 children: [
                                   TextFormField(
                                     keyboardType: TextInputType.text,
+                                    maxLines: 3,
                                     decoration: InputDecoration(
                                       label: Text("text_one".tr(context)),
                                       prefixIcon: Icon(Icons.title_rounded),

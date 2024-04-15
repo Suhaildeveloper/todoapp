@@ -29,8 +29,7 @@ class AppCubit extends Cubit<AppStates> {
     DoneScreen(),
     ArchivedScreen(),
   ];
-
-  void changeTitle(int index) {}
+  
   void changeCurrent(int index) {
     currentIndex = index;
     emit(AppBottomNavBarState());
